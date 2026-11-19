@@ -64,7 +64,7 @@ function draw() {
 */
 function drawEntity(){
     fill('black')
-    //noStroke()
+    noStroke()
     circle(entity.x,entity.y,entity.size,entity.size)
 }
 
