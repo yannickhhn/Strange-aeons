@@ -11,11 +11,21 @@
 
 "use strict";
 
+
+/*
+*
+* Variable initialisation
+* 
+*/
+let cthulu;
+
 /**
  * Creates the canvas and sets up the game.
 */
-function setup() {
+async function setup() {
     createCanvas(windowWidth,windowHeight)
+    noSmooth()
+     cthulu = await loadImage('./assets/images/cthulu.png')
 }
 
 
@@ -27,6 +37,7 @@ function draw() {
     background('black')
     starsBg()
     grid()
+    rlyeh()
 
 }
 
@@ -70,4 +81,18 @@ function starsBg(){
     for (let i=0; i<400; i++) {
         circle(random(width),random(height),2)
     }
+}
+
+
+//function for R'lyeh and maybe cthulu for testing 
+function rlyeh(){
+    fill('black')
+    stroke('white')
+    circle(width/2,height/2,200,200)
+    strokeWeight(1)
+    circle(width/2,height/2,170,170)
+    strokeWeight(2)
+    circle(width/2,height/2,130,130)
+    imageMode(CENTER)
+    image(cthulu,width/2,height/2-5,120,120)
 }
