@@ -52,8 +52,10 @@ function draw() {
     grid()
     rlyeh()
 
-    //Entity Related behavior 
+    //Entity Related behavior
+    keyEntity()
     drawEntity()
+    
 }
 
 /**
@@ -62,14 +64,34 @@ function draw() {
 */
 function drawEntity(){
     fill('black')
-    noStroke()
-    circle(mouseX,mouseY,entity.size,entity.size)
+    //noStroke()
+    circle(entity.x,entity.y,entity.size,entity.size)
 }
 
-function moveEntity(){
-
+//moves the entity with the keyboard
+function keyEntity(){
+    if (keyIsDown('d') || keyIsDown(RIGHT_ARROW)){
+        moveEntity(+5,0);
+    }
+    if (keyIsDown('s') || keyIsDown(DOWN_ARROW)){
+        moveEntity(0,+5);
+    }
+    if (keyIsDown('a') || keyIsDown(LEFT_ARROW)){
+        moveEntity(-5,0);
+    }
+    if (keyIsDown('w') || keyIsDown(UP_ARROW)){
+        moveEntity(0,-5);
+    }
 }
 
+//move entity
+function moveEntity(x,y){
+    entity.x +=x;
+    entity.y +=y;
+
+    entity.x = constrain(entity.x, entity.size / 2, width - entity.size / 2);
+    entity.y = constrain(entity.y, entity.size / 2, height - entity.size / 2);
+}
 
 
 
