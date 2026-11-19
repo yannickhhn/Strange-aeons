@@ -25,6 +25,7 @@ function setup() {
 function draw() {
     //Draws the background 
     background('black')
+    starsBg()
     grid()
 
 }
@@ -60,4 +61,13 @@ function grid(){
         circle(width/2,height/2,size)
     }
 
+}
+function starsBg(){
+    //same seed every frame so the stars don't move
+    randomSeed(42)
+    noStroke()
+    fill('white')
+    for (let i=0; i<400; i++) {
+        circle(random(width),random(height),2)
+    }
 }
