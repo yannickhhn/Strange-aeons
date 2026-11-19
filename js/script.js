@@ -1,24 +1,27 @@
 /**
- * Title of Project
- * Author Name
- * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * Strange Aeons
+ * Yannick Hantaniaina
+ *
+ * A small top-down game inspired by H.P. Lovecraft's The Call of Cthulhu.
+ * You are the entity that buried Cthulhu the first time, and you forgot how.
+ * Lead every sailor to a memory shrine so they forget the call, then return
+ * to R'lyeh at the pole and bury him again before the stars align.
+ *
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Creates the canvas and sets up the game.
 */
 function setup() {
-
+    createCanvas(windowWidth,windowHeight)
 }
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * Draws everything
 */
 function draw() {
-
+    background('black')
 }
