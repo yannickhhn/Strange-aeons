@@ -18,6 +18,19 @@
 * 
 */
 let cthulu;
+let entity = {
+    //movement and placement.
+    x: 200,
+    y: 200,
+    vx:2,
+    vy:2,
+    ax:0.1,
+    ay:0.1,
+
+    //size
+    size: 50,
+
+}
 
 /**
  * Creates the canvas and sets up the game.
@@ -39,7 +52,27 @@ function draw() {
     grid()
     rlyeh()
 
+    //Entity Related behavior 
+    drawEntity()
 }
+
+/**
+ * 
+ * Entity Functions
+*/
+function drawEntity(){
+    fill('black')
+    noStroke()
+    circle(mouseX,mouseY,entity.size,entity.size)
+}
+
+function moveEntity(){
+
+}
+
+
+
+
 
 
 /*
@@ -83,8 +116,7 @@ function starsBg(){
     }
 }
 
-
-//function for R'lyeh and maybe cthulu for testing 
+//function for R'lyeh and cthulu 
 function rlyeh(){
     fill('black')
     stroke('white')
