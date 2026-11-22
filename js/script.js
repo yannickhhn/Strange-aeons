@@ -28,9 +28,11 @@ let entity = {
     ay:0.1,
 
     //size
-    size: 50,
+    size: 40,
 
 }
+const REACH = 120;     // how far the entity bends the grid
+const STRENGTH = 60;   // how strong the pull is
 
 /**
  * Creates the canvas and sets up the game.
@@ -105,26 +107,26 @@ function moveEntity(x,y){
 
 // Function for the pole grid
 function grid(){
-    //two horizontal and vertical lines 
+    //two horizontal and vertical lines
     stroke('grey')
     strokeWeight(0.5)
-    line(0,height/2,width,height/2)//horizontal
-    line(width/2,0,width/2,height)//vertical
-
-    //diagonal lines 
-    line(0,0,width,height)
-    line(width,0,0,height)
-    line(width/4,0,width*3/4,height)
-    line(width*3/4,0,width/4,height)
-    line(0,height/4,width,height*3/4)
-    line(0,height*3/4,width,height/4)
-    line(width*3/8,0,width*5/8,height)
-    line(width*5/8,0,width*3/8,height)
-
-    //circles   
     noFill()
+    bentLine(0,height/2,width,height/2)//horizontal
+    bentLine(width/2,0,width/2,height)//vertical
+
+    //diagonal lines
+    bentLine(0,0,width,height)
+    bentLine(width,0,0,height)
+    bentLine(width/4,0,width*3/4,height)
+    bentLine(width*3/4,0,width/4,height)
+    bentLine(0,height/4,width,height*3/4)
+    bentLine(0,height*3/4,width,height/4)
+    bentLine(width*3/8,0,width*5/8,height)
+    bentLine(width*5/8,0,width*3/8,height)
+
+    //circles
     for (let size=200; size<=width+200; size+=200) {
-        circle(width/2,height/2,size)
+        bentCircle(size)
     }
 
 }
@@ -149,4 +151,54 @@ function rlyeh(){
     circle(width/2,height/2,130,130)
     imageMode(CENTER)
     image(cthulu,width/2,height/2-5,120,120)
+}
+
+//function to bend the map according to the entity test helper 
+function bend(x, y) {
+    //distance between the point and the entity
+    let dx = entity.x - x;
+    let dy = entity.y - y;
+    let d = dist(x, y, entity.x, entity.y);
+
+    //too far from the entity, the point stays the same
+    if (d > REACH || d === 0) {
+        return {
+            x: x,
+            y: y
+        };
+    }
+    let t = 1 - d / REACH;
+    t = t * t * (3 - 2 * t);
+
+
+    //the closer the point, the stronger the pull
+    let pull = STRENGTH * t;
+    pull = min(pull,d*0.6)
+    return {
+        x: x + (dx / d) * pull,
+        y: y + (dy / d) * pull
+    };
+}
+
+//  Bents the line of the grids helprt again
+function bentLine(x1, y1, x2, y2) {
+    let steps = dist(x1, y1, x2, y2) / 5
+    beginShape()
+    for (let i = 0; i <= steps; i++) {
+        let t = i / steps
+        let p = bend(lerp(x1, x2, t), lerp(y1, y2, t))
+        vertex(p.x, p.y)
+    }
+    endShape()
+}
+
+// bents the circle helper again
+function bentCircle(size) {
+    let r = size / 2
+    beginShape()
+    for (let a = 0; a <= TWO_PI; a += TWO_PI / 120) {
+        let p = bend(width/2 + r * cos(a), height/2 + r * sin(a))
+        vertex(p.x, p.y)
+    }
+    endShape(CLOSE)
 }
