@@ -32,3 +32,9 @@ I think this is one of my most creative decisions in the code so far, outside of
 ![Close-up of the grid lines bending around the entity](journal-images/grid-bend-closeup.png)
 
 ![The grid warping around the entity in the top left](journal-images/grid-bend-entity.png)
+
+
+## 25<sup>th</sup> November 2026
+Today I'm going to work on the shrines. I am thinking of making them appear randomly in different places every game, according to certain rules. I wanted it so that the game is always playable even after you've finished a round, and so you can play it over and over and over again. That's just a way for me to apply game design strategies to this.
+
+I was also thinking of doing a story narrative before the entire screen loads, so that the players have a little bit of context, and also so it's not just a raw game that begins and you don't know what you're doing.
