@@ -35,6 +35,7 @@ I think this is one of my most creative decisions in the code so far, outside of
 
 
 ## 25<sup>th</sup> November 2026
-Today I'm going to work on the shrines. I am thinking of making them appear randomly in different places every game, according to certain rules. I wanted it so that the game is always playable even after you've finished a round, and so you can play it over and over and over again. That's just a way for me to apply game design strategies to this.
+Today I'm going to work on the shrines. I am thinking of making them appear randomly in different places every game, according to certain rules. I wanted it so that the game is always playable even after you've finished a round, and so you can play it over and over and over again. That's just a way for me to apply game design strategies to this. I am also going to draw the shrines
+
 
 I was also thinking of doing a story narrative before the entire screen loads, so that the players have a little bit of context, and also so it's not just a raw game that begins and you don't know what you're doing.

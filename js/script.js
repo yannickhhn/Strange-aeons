@@ -18,6 +18,7 @@
 * 
 */
 let cthulu;
+let shrineImg;
 let entity = {
     //movement and placement.
     x: 200,
@@ -41,7 +42,7 @@ async function setup() {
     createCanvas(windowWidth,windowHeight)
     noSmooth()
      cthulu = await loadImage('./assets/images/cthulu.png')
-}
+     shrineImg = await loadImage('./assets/images/shrine.png')}
 
 
 /**
@@ -125,7 +126,7 @@ function grid(){
     bentLine(width*5/8,0,width*3/8,height)
 
     //circles
-    for (let size=200; size<=width+200; size+=200) {
+    for (let size=400; size<=width+200; size+=200) {
         bentCircle(size)
     }
 
