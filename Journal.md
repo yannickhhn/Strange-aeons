@@ -40,6 +40,6 @@ Today I'm going to work on the shrines. I am thinking of making them appear rand
 
 I was also thinking of doing a story narrative before the entire screen loads, so that the players have a little bit of context, and also so it's not just a raw game that begins and you don't know what you're doing.
 
-A quick reality check with coding just made me realize how complicated it is to make the process of randomizing shrine position because i wanted every shrine to be on the intersections of grids (perfectionist much?). I tried to see if its easier to just randomize their position while taking that requirement off. I could just use random() over a fixed array of shrines to place them randomly, and then a few constrains to keep them far away from each other or away from the middle / for the starting point of the entity.
+A quick reality check with coding just made me realize how complicated it is to make the process of randomizing shrine position because i wanted every shrine to be on the intersections of grids (perfectionist much?). I tried to see if its easier to just randomize their position while taking that requirement off. I could just use random() over a fixed array of shrines to place them randomly, and then a few constrains to keep them far away from each other or away from the middle / for the starting point of the entity. So far, it looks like this: 
 
 ![Shrines placed at random positions around R'lyeh](journal-images/shrines-random.png)
