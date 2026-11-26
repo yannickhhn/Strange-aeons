@@ -50,3 +50,5 @@ First, I am going to set up sailor objects. I was thinking of drawing them but h
 
 
 ![Sailor points pulsing in red around R'lyeh and the shrines](journal-images/sailors-red.png)
+
+Next, I will be thinking of the realisation of the clock. Initially, it was (all this with artistic ambitions) meant to be stars orbiting rlyeh and aligning when its time. First of all its kinda hard to set a trajectory on a circle, but also I have to keep rotating the stars each seconds. I will see if that is possible (circle math function) but in the meantime I will explore other less analog options. 
