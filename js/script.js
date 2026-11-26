@@ -4,8 +4,7 @@
  *
  * A small top-down game inspired by H.P. Lovecraft's The Call of Cthulhu.
  * You are the entity that buried Cthulhu the first time, and you forgot how.
- * Lead every sailor to a memory shrine so they forget the call, then return
- * to R'lyeh at the pole and bury him again before the stars align.
+ * Lead every sailor to a memory shrine so they forget the call, then return to R'lyeh at the pole and bury him again before the stars align.
  *
  */
 
@@ -18,7 +17,8 @@
 * 
 */
 let cthulu;
-let shrineImg;
+let shrine;
+let shrines =[];
 let entity = {
     //movement and placement.
     x: 200,
@@ -40,9 +40,12 @@ const STRENGTH = 60;   // how strong the pull is
 */
 async function setup() {
     createCanvas(windowWidth,windowHeight)
+    entity.y = height/2
+    placeShrines()
+    imageMode(CENTER)
     noSmooth()
      cthulu = await loadImage('./assets/images/cthulu.png')
-     shrineImg = await loadImage('./assets/images/shrine.png')}
+     shrine = await loadImage('./assets/images/shrine.png')}
 
 
 /**
@@ -58,9 +61,12 @@ function draw() {
     //Entity Related behavior
     keyEntity()
     drawEntity()
-    
+
+    //shrines
+    drawShrine()
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------
 /**
  * 
  * Entity Functions
@@ -98,7 +104,7 @@ function moveEntity(x,y){
 
 
 
-
+/*------------------------------------------------------------------------------------------------------------------
 
 /*
  * 
@@ -202,4 +208,55 @@ function bentCircle(size) {
         vertex(p.x, p.y)
     }
     endShape(CLOSE)
+}
+
+/*-----------------------------------------------------------------------------------------------------------------
+/*
+* Shrine functions
+*
+*/
+
+function drawShrine(){
+    for (let s of shrines){
+        image(shrine,s.x,s.y);
+    }
+}
+
+//function that loops over the array to place each shrine one by one on random pos
+function placeShrines(){
+
+   let tries = 0;
+
+   while (shrines.length < 6 && tries < 5000){
+    tries++;
+    let s = {
+        x: random(50,width-50),
+        y: random(50,height-50),
+    };
+
+    //checkers
+    //not next to rlyeh
+    if (dist(s.x,s.y,width/2,height/2)<200){
+        continue;
+    }
+
+    //not too close to the entity
+    if (dist(s.x,s.y,entity.x,entity.y)<300){
+        continue;
+    }
+
+    //not to close to each other
+    let tooClose = false;
+    for (let other of shrines){
+        if (dist(s.x,s.y,other.x,other.y)<400){
+            tooClose = true;
+        }
+    }
+    if (tooClose){
+        continue;
+    }
+
+    shrines.push(s);
+   }
+
 }

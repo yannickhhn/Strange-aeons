@@ -35,7 +35,11 @@ I think this is one of my most creative decisions in the code so far, outside of
 
 
 ## 25<sup>th</sup> November 2026
-Today I'm going to work on the shrines. I am thinking of making them appear randomly in different places every game, according to certain rules. I wanted it so that the game is always playable even after you've finished a round, and so you can play it over and over and over again. That's just a way for me to apply game design strategies to this. I am also going to draw the shrines
+Today I'm going to work on the shrines. I am thinking of making them appear randomly in different places every game, according to certain rules. I wanted it so that the game is always playable even after you've finished a round, and so you can play it over and over and over again. That's just a way for me to apply game design strategies to this.
 
 
 I was also thinking of doing a story narrative before the entire screen loads, so that the players have a little bit of context, and also so it's not just a raw game that begins and you don't know what you're doing.
+
+A quick reality check with coding just made me realize how complicated it is to make the process of randomizing shrine position because i wanted every shrine to be on the intersections of grids (perfectionist much?). I tried to see if its easier to just randomize their position while taking that requirement off. I could just use random() over a fixed array of shrines to place them randomly, and then a few constrains to keep them far away from each other or away from the middle / for the starting point of the entity.
+
+![Shrines placed at random positions around R'lyeh](journal-images/shrines-random.png)
