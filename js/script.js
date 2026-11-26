@@ -17,8 +17,6 @@
 * 
 */
 let cthulu;
-let shrine;
-let shrines =[];
 let entity = {
     //movement and placement.
     x: 200,
@@ -30,11 +28,16 @@ let entity = {
 
     //size
     size: 40,
-
 }
 const REACH = 120;     // how far the entity bends the grid
 const STRENGTH = 60;   // how strong the pull is
+let shrine;
+let shrines =[];
+let sailor;
+let sailors = [];
 
+
+//--------------------------------------------------------------------------------------------------------
 /**
  * Creates the canvas and sets up the game.
 */
@@ -42,12 +45,13 @@ async function setup() {
     createCanvas(windowWidth,windowHeight)
     entity.y = height/2
     placeShrines()
+    placeSailors()
     imageMode(CENTER)
     noSmooth()
      cthulu = await loadImage('./assets/images/cthulu.png')
      shrine = await loadImage('./assets/images/shrine.png')}
 
-
+//---------------------------------------------------------------------------------------------------------
 /**
  * Draws everything
 */
@@ -64,6 +68,9 @@ function draw() {
 
     //shrines
     drawShrine()
+
+    //sailors 
+    drawSailors()
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -259,4 +266,48 @@ function placeShrines(){
     shrines.push(s);
    }
 
+}
+
+
+/**
+ * Sailors functions 
+ * 
+ */
+//draws sailor 
+function drawSailors(){
+    for ( let s of sailors){
+        s.angle += 0.05;
+        let pulse = sin(s.angle);
+
+        //middle circle
+        noStroke()
+        fill('red')
+        circle(s.x,s.y,s.size);
+
+        //ring
+        noFill()
+        stroke('red')
+        strokeWeight(1)
+        let ringSize = s.size + 10 + pulse*6;
+        circle(s.x,s.y,ringSize);
+    }
+}
+
+//places the sailors on the map
+function placeSailors(){
+     while (sailors.length < 30){
+        let s = {
+            x: random(50,width-50),
+            y: random(50,height-50),
+            size: random(8,20),
+            angle: random(TWO_PI)
+        };
+
+        //not inside rlyeh
+        if (dist(s.x,s.y,width/2,height/2) < 150){
+            continue;
+        }
+
+        sailors.push(s);
+    }
 }
